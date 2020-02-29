@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import { userInfo } from 'os';
 
 // class App extends Component{
 //   render(){
@@ -12,13 +13,26 @@ import React,{Component} from 'react';
 // }
 
 const App =()=>{
+
+  const profiles=[
+    {name:"kaito", age:21},
+    {name:"koko",age:20},
+    {name:"kokoro"}
+  ]
   return (
-  <div>
-    <Cat/>
+  <div>{
+    profiles.map((e,index)=>{
+     return <User name={e.name} age={e.age} key={index}/>
+    })
+  }
   </div>
   )
 }
-const Cat =()=>{
-  return <div>meow!</div>
+const User =(props)=>{
+  return <div>Hi!, I am {props.name}, and{props.age} years old!</div>
+}
+
+User.defaultProps={
+  age:1
 }
 export default App;
